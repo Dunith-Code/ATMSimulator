@@ -36,4 +36,16 @@ public class ATMService {
         // return fake approval code
         return "AUTH-" + System.currentTimeMillis();
     }
+
+    // put money back in
+    public String processDeposit(String cardNumber, BigDecimal amount) {
+        Account account = accountRepository.findByCardNumber(cardNumber)
+                .orElseThrow(() -> new RuntimeException("Account not found"));
+
+        BigDecimal newBalance = account.getBalance().add(amount);
+        account.setBalance(newBalance);
+        accountRepository.save(account);
+
+        return "DEP-" + System.currentTimeMillis();
+    }
 }

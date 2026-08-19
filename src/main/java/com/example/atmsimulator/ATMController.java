@@ -29,4 +29,17 @@ public class ATMController {
             return Map.of("status", "FAILED", "message", e.getMessage());
         }
     }
+
+    @PostMapping("/deposit")
+    public Map<String, String> deposit(@RequestBody Map<String, String> request) {
+        String cardNumber = request.get("cardNumber");
+        BigDecimal amount = new BigDecimal(request.get("amount"));
+
+        try {
+            String authCode = atmService.processDeposit(cardNumber, amount);
+            return Map.of("status", "SUCCESS", "authCode", authCode, "message", "Deposit successful");
+        } catch (RuntimeException e) {
+            return Map.of("status", "FAILED", "message", e.getMessage());
+        }
+    }
 }
