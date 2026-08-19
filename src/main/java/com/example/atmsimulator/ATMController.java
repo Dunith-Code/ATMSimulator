@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import java.util.Map;
 
 // Handle request (waiter)
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/api/atm")
 public class ATMController {

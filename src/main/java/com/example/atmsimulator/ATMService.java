@@ -1,6 +1,7 @@
 package com.example.atmsimulator;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 
 // Business logic layer
@@ -14,7 +15,8 @@ public class ATMService {
         this.accountRepository = accountRepository;
     }
 
-    // withdraw money
+    // withdraw money and whole process runs in single DB
+    @Transactional
     public String processWithdrawal(String cardNumber, BigDecimal amount) {
 
         // find the account
@@ -38,6 +40,7 @@ public class ATMService {
     }
 
     // put money back in
+    @Transactional
     public String processDeposit(String cardNumber, BigDecimal amount) {
         Account account = accountRepository.findByCardNumber(cardNumber)
                 .orElseThrow(() -> new RuntimeException("Account not found"));

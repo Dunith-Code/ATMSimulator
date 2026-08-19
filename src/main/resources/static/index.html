@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+            margin: 0;
+        }
+
+        .atm-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 350px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-withdraw {
+            background-color: #e74c3c;
+        }
+
+        .btn-withdraw:hover {
+            background-color: #2ecc71;
+        }
+
+        .btn-deposit {
+            background-color: #2ecc71;
+        }
+
+        .btn-deposit:hover {
+            background-color: #27ae60;
+        }
+
+        #response-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #ecf0f1;
+            word-wrap: break-word;
+            font-size: 14px;
+            color: #2c3e50;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+
+        .success-message {
+            color: #27ae60;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="atm-container">
+    <h1>ATM Simulator</h1>
+
+    <div class="input-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" placeholder="Enter card number" value="1234-5678-9012">
+    </div>
+
+    <div class="input-group">
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" placeholder="Enter amount" value="100">
+    </div>
+
+    <div class="button-group">
+        <button class="btn-withdraw" onclick="handleTransaction('withdraw')">Withdraw</button>
+        <button class="btn-deposit" onclick="handleTransaction('deposit')">Deposit</button>
+    </div>
+
+    <!-- response from backend will appear -->
+    <div id="response-message">
+        <p>Your transaction result will appear here...</p>
+    </div>
+</div>
+
+<!--JS-->
+<script>
+    // enables modern JS error checking
+    'use strict';
+
+    // function f handles the core transaction logic
+    async function handleTransaction(type) {
+        // 1. DOM Manipulation
+        const cardNumber = document.getElementById('cardNumber').value.trim();
+        const amount = document.getElementById('amount').value.trim();
+        const responseDiv = document.getElementById('response-message');
+
+        // 2. Client-side validation
+        if (!cardNumber || !amount) {
+            responseDiv.innerHTML = `<p class="error-message"> Please fill in all fields.</p>`;
+            return;
+        }
+
+        if (isNaN(amount) || parseFloat(amount) <= 0) {
+            responseDiv.innerHTML = `<p class="error-message"> Please enter a valid positive amount.</p>`;
+            return;
+        }
+
+        // 3. Construct JSON payload
+        const payload = {
+            cardNumber: cardNumber,
+            amount: amount
+        };
+
+        // 4. Fetch API (calling spring boot backend)
+        const url=`http://localhost:8080/api/atm/${type}`;
+
+        // loading message
+        responseDiv.innerHTML =`<p>Processing ${type}... Please wait.</p>`;
+
+        try {
+            // await pause the func. until fetch complete
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            // 5. Parse the JSON response
+            const data = await response.json();
+
+            // 6. update UI based on the response
+            if (data.status === 'SUCCESS') {
+                responseDiv.innerHTML =`
+                    <p class="success-message">${data.message}</p>
+                    <p>Authorization Code: ${data.authCode}</p>`;
+            } else {
+                responseDiv.innerHTML =`<p class="error-message">Failed: ${data.message}</p>`;
+            }
+        } catch (error) {
+            // 7. Error handling
+            console.error('Transaction error:', error);
+            responseDiv.innerHTML = `
+                <p class="error-message">Network error! Is Spring Boot server running on port 8080?</p>
+                <p>${error.message}</p>`;
+        }
+    }
+
+    //test if the JS loaded correctly
+    console.log('ATM UI loaded successfully');
+</script>
+</body>
+</html>
