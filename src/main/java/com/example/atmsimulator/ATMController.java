@@ -20,11 +20,14 @@ public class ATMController {
     @PostMapping("/withdraw")
     public Map<String, String>withdraw(@RequestBody Map<String, String> request) {
 
+        // 1. extract all data from the request
         String cardNumber = request.get("cardNumber");
+        String pin = request.get("pin"); // PIN extraction
         BigDecimal amount = new BigDecimal(request.get("amount"));
 
         try {
-            String authCode = atmService.processWithdrawal(cardNumber, amount);
+            // 2. call the service, which validates PIN internally
+            String authCode = atmService.processWithdrawal(cardNumber, pin, amount);
             return Map.of("status", "SUCCESS", "authCode", authCode, "message", "Please collect your cash");
         } catch (RuntimeException e) {
             return Map.of("status", "FAILED", "message", e.getMessage());
@@ -34,10 +37,11 @@ public class ATMController {
     @PostMapping("/deposit")
     public Map<String, String> deposit(@RequestBody Map<String, String> request) {
         String cardNumber = request.get("cardNumber");
+        String nic = request.get("nic"); // NIC extraction
         BigDecimal amount = new BigDecimal(request.get("amount"));
 
         try {
-            String authCode = atmService.processDeposit(cardNumber, amount);
+            String authCode = atmService.processDeposit(cardNumber, nic, amount);
             return Map.of("status", "SUCCESS", "authCode", authCode, "message", "Deposit successful");
         } catch (RuntimeException e) {
             return Map.of("status", "FAILED", "message", e.getMessage());

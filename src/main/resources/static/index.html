@@ -119,6 +119,16 @@
         <input type="number" id="amount" placeholder="Enter amount" value="100">
     </div>
 
+    <div class="input-group">
+        <label for="amount">PIN</label>
+        <input type="password" id="pin" placeholder="Enter PIN" value="1234">
+    </div>
+
+    <div class="input-group">
+        <label for="amount">NIC</label>
+        <input type="password" id="nic" placeholder="Enter NIC" value="123456789V">
+    </div>
+
     <div class="button-group">
         <button class="btn-withdraw" onclick="handleTransaction('withdraw')">Withdraw</button>
         <button class="btn-deposit" onclick="handleTransaction('deposit')">Deposit</button>
@@ -140,6 +150,8 @@
         // 1. DOM Manipulation
         const cardNumber = document.getElementById('cardNumber').value.trim();
         const amount = document.getElementById('amount').value.trim();
+        const pin = document.getElementById('pin').value.trim();
+        const nic = document.getElementById('nic').value.trim();
         const responseDiv = document.getElementById('response-message');
 
         // 2. Client-side validation
@@ -154,10 +166,29 @@
         }
 
         // 3. Construct JSON payload
-        const payload = {
-            cardNumber: cardNumber,
-            amount: amount
-        };
+        let payload = {};
+        if (type === 'withdraw') {
+            if (!pin) {
+                responseDiv.innerHTML = `<p class="error-message"> Please enter your PIN for withdrawal.</p>`;
+                return;
+            }
+            payload = {
+                cardNumber: cardNumber,
+                pin: document.getElementById('pin').value.trim(),
+                amount: amount
+            };
+        } else {
+            // deposit
+            if (!nic) {
+                responseDiv.innerHTML = `<p class="error-message"> Please enter your NIC for deposit.</p>`;
+                return;
+            }
+            payload = {
+                cardNumber: cardNumber,
+                nic: document.getElementById('nic').value.trim(),
+                amount: amount
+            };
+        }
 
         // 4. Fetch API (calling spring boot backend)
         const url=`http://localhost:8080/api/atm/${type}`;

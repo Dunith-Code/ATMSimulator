@@ -21,6 +21,10 @@ public class Account {
     @Column(nullable = false)
     private String Pin;
 
+    // NIC
+    @Column(nullable = false)
+    private String nic;
+
     // Balance
     @Column(precision = 15, scale = 2)
     private BigDecimal balance;
@@ -49,6 +53,13 @@ public class Account {
 
     public void setPin(String pin) {
         Pin = pin;
+    }
+
+    public String getNic() {
+        return nic;
+    }
+    public void setNic(String nic) {
+        this.nic = nic;
     }
 
     public BigDecimal getBalance() {
