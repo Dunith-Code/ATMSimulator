@@ -1,0 +1,179 @@
+<mxfile host="Electron">
+  <diagram name="Page-1" id="cmZz270v9kNf5vK8R1h-">
+    <mxGraphModel dx="1144" dy="696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-1" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="ATM" vertex="1">
+          <mxGeometry height="610" width="100" x="237" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-2" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};participant=umlActor;" value="" vertex="1">
+          <mxGeometry height="610" width="20" x="107" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-3" parent="1" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;curved&quot;:0,&quot;rounded&quot;:0};" value="Proxy Server" vertex="1">
+          <mxGeometry height="610" width="100" x="460" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-5" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" value="Database" vertex="1">
+          <mxGeometry height="60" width="60" x="675" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-6" edge="1" parent="1" style="endArrow=none;dashed=1;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" target="FTEogi6PtwxN9c3bNcYt-5" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="705" y="650" as="sourcePoint" />
+            <mxPoint x="535" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-7" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;" value="Insert Card &amp;amp; Enter PIN">
+          <mxGeometry relative="1" width="60" as="geometry">
+            <Array as="points">
+              <mxPoint x="197" y="119" />
+            </Array>
+            <mxPoint x="116.5" y="119" as="sourcePoint" />
+            <mxPoint x="286.5" y="119" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-8" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;" target="FTEogi6PtwxN9c3bNcYt-3" value="Authentication Request">
+          <mxGeometry relative="1" width="60" as="geometry">
+            <mxPoint x="287" y="177" as="sourcePoint" />
+            <mxPoint x="482" y="177" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-11" edge="1" parent="1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;innerLoopWaypoints=1;" value="Encrypt PIN">
+          <mxGeometry relative="1" x="-0.6639" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="397" y="129" />
+              <mxPoint x="397" y="149" />
+            </Array>
+            <mxPoint x="286.5" y="129" as="sourcePoint" />
+            <mxPoint x="286.5" y="149" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-12" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;" value="Check hash from accounts">
+          <mxGeometry relative="1" width="60" as="geometry">
+            <mxPoint x="510" y="207" as="sourcePoint" />
+            <mxPoint x="705.5" y="207" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-13" edge="1" parent="1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;innerLoopWaypoints=1;" value="Compare &amp;amp; Validate">
+          <mxGeometry relative="1" x="-0.7603" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="646" y="270" />
+              <mxPoint x="646" y="290" />
+            </Array>
+            <mxPoint x="510" y="270" as="sourcePoint" />
+            <mxPoint x="510" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-14" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" value="Authentication Success (Session token)">
+          <mxGeometry relative="1" x="-0.1081" y="-5" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <mxPoint x="509.5" y="326" as="sourcePoint" />
+            <mxPoint x="286.3888888888889" y="326" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-15" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" value="Eject Card &amp;amp; Receipt">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="237.5" y="630" />
+            </Array>
+            <mxPoint x="286.5" y="630" as="sourcePoint" />
+            <mxPoint x="116.5" y="630" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-16" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" value="return hash">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="705.5" y="240" as="sourcePoint" />
+            <mxPoint x="510" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-19" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;" value="Select Withdraw">
+          <mxGeometry relative="1" width="60" as="geometry">
+            <Array as="points">
+              <mxPoint x="227.5" y="350" />
+            </Array>
+            <mxPoint x="116.5" y="350" as="sourcePoint" />
+            <mxPoint x="286.5" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-25" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;" value="Debit Request">
+          <mxGeometry relative="1" width="60" as="geometry">
+            <Array as="points">
+              <mxPoint x="423.5" y="376" />
+            </Array>
+            <mxPoint x="287" y="376" as="sourcePoint" />
+            <mxPoint x="509.5" y="376" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-26" edge="1" parent="1" source="FTEogi6PtwxN9c3bNcYt-3" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;" value="Begin Transaction">
+          <mxGeometry relative="1" width="60" as="geometry">
+            <Array as="points">
+              <mxPoint x="621.5" y="410" />
+            </Array>
+            <mxPoint x="485" y="410" as="sourcePoint" />
+            <mxPoint x="705" y="410" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-27" edge="1" parent="1" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;" value="Update Accounts">
+          <mxGeometry relative="1" width="60" as="geometry">
+            <Array as="points">
+              <mxPoint x="632" y="440" />
+            </Array>
+            <mxPoint x="510" y="440" as="sourcePoint" />
+            <mxPoint x="705.5" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-28" edge="1" parent="1" source="FTEogi6PtwxN9c3bNcYt-3" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;" value="Insert Logs">
+          <mxGeometry relative="1" width="60" as="geometry">
+            <Array as="points">
+              <mxPoint x="642" y="470" />
+            </Array>
+            <mxPoint x="520" y="470" as="sourcePoint" />
+            <mxPoint x="705" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-29" edge="1" parent="1" source="FTEogi6PtwxN9c3bNcYt-3" style="html=1;verticalAlign=bottom;startArrow=oval;startFill=1;endArrow=block;startSize=8;curved=0;rounded=0;" value="Commit">
+          <mxGeometry relative="1" width="60" as="geometry">
+            <Array as="points">
+              <mxPoint x="652" y="500" />
+            </Array>
+            <mxPoint x="520" y="500" as="sourcePoint" />
+            <mxPoint x="705" y="500" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-30" edge="1" parent="1" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" value="Success (Authentication)">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="636.5" y="530" />
+            </Array>
+            <mxPoint x="705.5" y="530" as="sourcePoint" />
+            <mxPoint x="510" y="530" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-31" edge="1" parent="1" source="FTEogi6PtwxN9c3bNcYt-3" style="html=1;verticalAlign=bottom;endArrow=open;dashed=1;endSize=8;curved=0;rounded=0;" value="Approval Code">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="418" y="553" />
+            </Array>
+            <mxPoint x="481.5" y="553" as="sourcePoint" />
+            <mxPoint x="286.5" y="553" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-32" edge="1" parent="1" style="html=1;align=left;spacingLeft=2;endArrow=block;rounded=0;edgeStyle=orthogonalEdgeStyle;curved=0;rounded=0;innerLoopWaypoints=1;" value="Despense Cash">
+          <mxGeometry relative="1" x="-0.7571" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="432" y="581" />
+              <mxPoint x="432" y="601" />
+            </Array>
+            <mxPoint x="286.5" y="581" as="sourcePoint" />
+            <mxPoint x="286.5" y="601" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="FTEogi6PtwxN9c3bNcYt-33" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Customer" vertex="1">
+          <mxGeometry height="30" width="60" x="90" y="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
