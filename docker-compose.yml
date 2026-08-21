@@ -1,0 +1,67 @@
+
+services:
+
+  # 1. The Database
+  postgres:
+
+    #
+    image: postgres:15
+
+    #
+    environment:
+      POSTGRES_DB: atm_db #DB name
+      POSTGRES_USER: postgres #DB user
+      POSTGRES_PASSWORD: dunith #DB password
+
+    #
+    ports:
+      - "5432:5432"
+    
+    #
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    
+    #
+    networks:
+      - atm-network
+    
+  # 2. The backend
+  spring-boot-app:
+    #
+    build: .
+
+    #
+    depends_on:
+      - postgres
+    
+    #
+    #
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/atm_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: dunith
+    ports:
+      - "8080:8080"
+    networks:
+      - atm-network
+    
+  # node js UI server
+  node-ui:
+    build: 
+      context: .
+      dockerfile: node-server/Dockerfile
+    depends_on:
+      - spring-boot-app
+    ports:
+      - "3000:3000"
+    networks:
+      - atm-network
+      
+
+#
+volumes:
+  postgres_data:
+
+#
+networks:
+  atm-network:
