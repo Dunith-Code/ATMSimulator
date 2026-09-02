@@ -32,5 +32,13 @@ build/
 ### VS Code ###
 .vscode/
 
-.log
-.xml
+# Log files
+*.log
+*.log.gz
+logs/
+
+# Maven build directory
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
