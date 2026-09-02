@@ -206,9 +206,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 # 👨‍💻 Author
 **Dunith Desitha Athukorala**
 
-- **LinkedIn:** https://www.linkedin.com/in/dunith/
-- **GitHub:** https://github.com/Dunith-Code
-- **Medium:** https://medium.com/@Dunith-Write
+- Email: dunithofficial@gmail.com
+- LinkedIn: [linkedin.com/in/dunith](https://www.linkedin.com/in/dunith)
+- GitHub: [github.com/Dunith-Code](https://github.com/Dunith-Code)
+- Medium: [medium.com/@Dunith-Write](https://medium.com/@Dunith-Write)
+- Behance: [behance.net/dunith](https://www.behance.net/dunith)
 
 **Happy Learning ☕**
 
